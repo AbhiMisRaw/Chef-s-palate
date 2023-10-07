@@ -2,11 +2,31 @@
 
 {% block body %}
 <BR>
-    
-<form method="POST">
-    {% csrf_token %}
-    {{form}}
-    <button type="submit" >Save</button>
+    <div class="container">
+        <div class="row">
+             <div class="col-md-4 offset-md-4">
+                  <div class="card">
+                       <div class="card-header bg-info text-white">
+                            <div class="card-title">Add Food Item</div>
+                       </div>
+                       <div class="card-body">                     
+                        <form method="POST">
+                            {% csrf_token %}
+                            {% for field in form %}
+                            <div class="form-group">
+                                {{ field.name }}
+                                <br>
+                                {{ field }}
+                            </div>
+                        {% endfor %}
+                            <button type="submit" >Save</button>
+                        </form>
+                       </div>
+                  </div>
+             </div>
+        </div>
+        
+   </div>
+   
 
-</form>
 {% endblock %}

@@ -3,11 +3,12 @@ from . import views
 
 app_name='food'
 urlpatterns = [
-    path('', view=views.hello_world , name='index'),
+    path('', view=views.IndexClassView.as_view() , name='index'),
     path('items/', view=views.items, name='items'),
-    path('<int:item_id>/', view=views.details, name='details'),
+    #for a particular food items
+    path('<int:pk>/', view=views.FoodDetail.as_view(), name='details'),
     #Add
-    path('add/', view=views.create_item, name='create_item'),
+    path('add/', view=views.CreateItem.as_view(), name='create_item'),
     # UPDATE
     path('update/<int:item_id>/',view=views.update_item, name='update_item'),
     # delete
