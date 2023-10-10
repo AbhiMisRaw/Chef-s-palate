@@ -3,23 +3,40 @@
 {% block body %}
 <BR>
     <div class="container">
+     <br>
         <div class="row">
-             <div class="col-md-4 offset-md-4">
-                  <div class="card">
-                       <div class="card-header bg-info text-white">
-                            <div class="card-title">Add Food Item</div>
+             <div class="col-md-8 offset-md-2">
+                  <div class="card border-dark mb-6">
+                       <div class="card-header bg-dark text-white text-center">
+                            <div class="card-title display-4 fw-medium p-3 ">Add Food Item</div>
                        </div>
                        <div class="card-body">                     
                         <form method="POST">
                             {% csrf_token %}
                             {% for field in form %}
-                            <div class="form-group">
-                                {{ field.name }}
+                            <div class="form-group fw-medium fs-5">
+                              {% if field.name == "item_name" %}
+                                   <label >Name of Dish</label>
+                                   {% elif field.name == "item_desc" %}
+                                   <label>Dish Description</label>
+                                   {% elif field.name == "item_price" %}
+                                   <label>Estimated Price</label>
+                                  {%else%}
+                                  <label>
+                                   Image URL
+                                   <span id="passwordHelpInline" class="form-text">
+                                        Leave this if you want to use default image
+                                      </span></label>
+                                  
+                                   <!-- {{ field.name }} -->
+                              {% endif %}
                                 <br>
-                                {{ field }}
+                                <div>{{ field }}</div>
+                                
+                                <hr>
                             </div>
                         {% endfor %}
-                            <button type="submit" >Save</button>
+                            <button class="btn btn-primary btn-lg btn-block col-12" type="submit" >Save</button>
                         </form>
                        </div>
                   </div>

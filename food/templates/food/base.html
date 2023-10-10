@@ -9,18 +9,20 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-dark bg-dark">
-        <a href="#" class="navbar-brand"> Food Recipe </a>
+    <nav class="navbar navbar-dark bg-dark grid">
+        <a href="{% url 'food:index' %}" class="navbar-brand g-col-8"> Food Recipe </a>
 
-        <div class="navbar" style="color: aqua;">
-            <a href="#" class="nav-item nav-link">View Items</a>
-            <a href="#" class="nav-item nav-link">Delete Items</a>
-            <a href="{% url 'food:create_item' %}" class="nav-item nav-link">Add Items</a>
+        <div class="navbar g-col-4" style="color: aqua;">
+            <a href="{% url 'food:index' %}" class="text-decoration-none btn btn-dark">View Items</a>
+            
+            <a href="{% url 'food:create_item' %}" class="text-decoration-none btn btn-dark">Add Items</a>
+
+            <a href="{% url 'register' %}" class="text-decoration-none btn btn-dark">Register</a>
             {% if user.is_authenticated %}
-            <a href="{% url 'profile' %}">Profile</a>
-                <a href="{% url 'logout' %}">Logout</a>
+            <a class="text-decoration-none" href="{% url 'profile' %}">Profile</a>
+                <a href="{% url 'logout' %}" class="btn btn-dark">Logout</a>
             {% else %}
-                <a href="{% url 'login' %}">Login</a>
+                <a class="text-decoration-none btn btn-dark"  href="{% url 'login' %}">Login</a>
             {% endif %}
         </div>
     </nav>

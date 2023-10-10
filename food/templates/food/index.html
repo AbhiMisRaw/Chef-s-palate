@@ -17,20 +17,24 @@
      {% for item in all_items %}
      <div class="row">
         <div class="col-md-3 offset-md-2">
-            <img class="card" height="150px" src="{{ item.item_image }}">
+            <img class="img-thumbnail" height="150px" width="300px" src="{{ item.item_image }}">
         </div>
         <div class="col-md-4">
-            <h3>{{ item.item_name }}</h3>
-            <h5>{{ item.item_desc }}</h5>
+            <div class="fs-1 fw-bold">{{ item.item_name }}</div>
+            <div class="fs-3">{{ item.item_desc }}</div>
             <h6>$ {{ item.item_price }}</h6>
+            <br>
             <p>Posted By : {{item.user_name}}</p>
+            
         </div>
         <div class="col-md-2">
             <a href="{% url 'food:details' item.id %}" class="btn btn-success">Details</a>
         </div>
+        
      </div>
-     <br>
 
+     <br>
+     
      {% endfor %}
 
      {% endblock %}

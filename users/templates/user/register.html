@@ -1,28 +1,46 @@
 {% extends 'food/base.html' %}
 
 {% block body %}
-
+<br>
 <div class="container">
+    <br>
     <div class="row">
-         <div class="col-md-4 offset-md-4">
-              <div class="card">
-                   <div class="card-header bg-info text-white">
-                        <div class="card-title">Register</div>
+         <div class="col-md-8 offset-md-2">
+              <div class="card border-dark mb-6">
+                   <div class="card-header bg-dark text-white text-center">
+                        <div class="card-title display-4 fw-medium p-3 ">Register</div>
                    </div>
-                   <div class="card-body">
+                   <div class="card-body ">
                     <form method="POST">
-
                         {% csrf_token %}
                         
                         {% for field in form %}
-                            <div class="form-group">
-                                {{ field.name }}
+                            <div class="form-group fw-medium fs-5 col-12">
+                                {% if field.name == "username" %}
+                                   <label >User Name</label>
+                                   {% elif field.name == "email" %}
+                                   <label>Email</label>
+                                   {% elif field.name == "password1" %}
+                                   <label>Password &nbsp; <span id="passwordHelpInline" class="form-text">
+                                    Must be 8-20 characters long.
+                                  </span></label>
+                                   {% elif field.name == "password2" %}
+                                   <label>Confirm Password
+                                    <span id="passwordHelpInline" class="form-text">
+                                    Must be same as above password.
+                                  </span></label>
+                                  {%else%}
+                                  <label>Image URL</label>
+                                   <!-- {{ field.name }} -->
+                                   
+                              {% endif %}
                                 <br>
-                                {{ field }}
+                                <div class="col-12">{{ field }}</div>
+                                <hr>
                             </div>
                         {% endfor %}
                         <br>
-                        <button class="btn-info" type="submit">Signup</button>
+                        <button class="btn btn-primary btn-lg btn-block col-12" type="submit">Signup</button>
                     </form>
                    </div>
               </div>
